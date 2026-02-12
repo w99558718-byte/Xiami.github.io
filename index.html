@@ -79,10 +79,13 @@
     <script>
         function updateGoldPrice() {
             setTimeout(() => {
-                const londonPrice = "5059.95";
-                const londonChange = "-0.20";
-                const shanghaiPrice = "1122.56";
-                const shanghaiChange = "-2.49";
+                // 模拟价格波动，实际应用中可替换为真实接口数据
+                const baseLondonPrice = 5059.95;
+                const baseShanghaiPrice = 1122.56;
+                const londonChange = (Math.random() * 2 - 1).toFixed(2); 
+                const shanghaiChange = (Math.random() * 2 - 1).toFixed(2); 
+                const londonPrice = (baseLondonPrice + parseFloat(londonChange)).toFixed(2);
+                const shanghaiPrice = (baseShanghaiPrice + parseFloat(shanghaiChange)).toFixed(2);
                 
                 document.getElementById('london-gold').textContent = londonPrice;
                 document.getElementById('shanghai-gold').textContent = shanghaiPrice;
@@ -102,7 +105,7 @@
         }
         
         updateGoldPrice();
-        setInterval(updateGoldPrice, 60000);
+        setInterval(updateGoldPrice, 5000); 
     </script>
 </body>
 </html>
