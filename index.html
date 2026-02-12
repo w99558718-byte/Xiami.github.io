@@ -4,87 +4,104 @@
     <meta charset="UTF-8">
     <title>实时金价行情</title>
     <style>
-        :root {--bg-color: white;--text-color: black;--theme-color: #007bff;}
-        body.dark-theme {--bg-color: #222;--text-color: white;--theme-color: #4CAF50;}
-        body {background: var(--bg-color); color: var(--text-color); transition: all 0.3s; font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;}
-        .header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;}
-        button {padding: 10px 20px; border: none; border-radius: 5px; background: var(--theme-color); color: white; cursor: pointer; font-size: 16px;}
-        .gold-price {margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.05); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        :root {--bg-color: white;--text-color: black;--theme-color: #007bff;--nav-bg: #f8f9fa;--card-bg: #ffffff;--section-bg: #f5f5f5;}
+        body.dark-theme {--bg-color: #222;--text-color: white;--theme-color: #4CAF50;--nav-bg: #333;--card-bg: #3a3a3a;--section-bg: #333;}
+        body {background: var(--bg-color); color: var(--text-color); transition: all 0.3s; font-family: Arial, sans-serif; margin: 0; padding: 0;}
+        nav {background: var(--nav-bg); padding: 15px 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
+        .nav-container {max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;}
+        .nav-logo {font-size: 20px; font-weight: bold;}
+        .nav-links a {margin-left: 20px; color: var(--text-color); text-decoration: none;}
+        .hero-section {background: var(--section-bg); padding: 40px 30px; text-align: center;}
+        .hero-section h1 {margin: 0 0 10px; font-size: 32px;}
+        .hero-section p {margin: 0; color: #666;}
+        .content {max-width: 1200px; margin: 30px auto; padding: 0 30px;}
+        .card {background: var(--card-bg); border-radius: 10px; padding: 25px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
         .gold-price h2 {margin-top: 0; color: var(--theme-color);}
-        .price-container {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;}
-        .price-item {flex: 1; min-width: 250px; background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--theme-color);}
-        .price-value {font-size: 24px; font-weight: bold; margin: 5px 0;}
-        .change {font-size: 16px; padding: 3px 10px; border-radius: 20px; display: inline-block;}
+        .price-container {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin: 20px 0;}
+        .price-item {flex: 1; min-width: 250px; background: rgba(0,0,0,0.03); padding: 20px; border-radius: 8px;}
+        .price-value {font-size: 28px; font-weight: bold; margin: 10px 0;}
+        .change {font-size: 18px; padding: 5px 12px; border-radius: 20px; display: inline-block;}
         .rise {background: #e6f7ee; color: #00b42a;}
         .fall {background: #fff1f0; color: #f53f3f;}
-        .image-border {border: 3px solid var(--theme-color); padding: 5px; border-radius: 8px; display: inline-block; margin: 20px 0;}
-        .update-time {font-size: 14px; color: #666; margin-top: 10px; text-align: right;}
+        .image-section {text-align: center; margin: 30px 0;}
+        .image-border {border: 3px solid var(--theme-color); padding: 8px; border-radius: 8px; display: inline-block;}
+        .update-time {font-size: 14px; color: #666; margin-top: 15px; text-align: right;}
+        .note {max-width: 1200px; margin: 0 auto 30px; padding: 0 30px; color: #666;}
+        button {padding: 10px 20px; border: none; border-radius: 5px; background: var(--theme-color); color: white; cursor: pointer; font-size: 16px;}
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>实时金价行情</h1>
-        <button onclick="document.body.classList.toggle('dark-theme')">切换深色模式</button>
-    </div>
-    
-    <div class="gold-price">
-        <h2>国际黄金价格</h2>
-        <div class="price-container">
-            <div class="price-item">
-                <h3>伦敦金现</h3>
-                <div class="price-value" id="london-gold">5059.95</div>
-                <div class="change fall" id="london-change">-0.20 美元</div>
-            </div>
-            <div class="price-item">
-                <h3>上海黄金T+D</h3>
-                <div class="price-value" id="shanghai-gold">1122.56</div>
-                <div class="change fall" id="shanghai-change">-2.49 元</div>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">金价行情</div>
+            <div class="nav-links">
+                <a href=" ">首页</a >
+                <a href="#">历史数据</a >
+                <a href="#">交易指南</a >
+                <button onclick="document.body.classList.toggle('dark-theme')">切换深色模式</button>
             </div>
         </div>
-        <div class="update-time">最后更新: <span id="update-time">2026-02-12 20:26:45</span></div>
+    </nav>
+    
+    <div class="hero-section">
+        <h1>实时金价行情</h1>
+        <p>实时追踪国际与国内黄金价格动态，为交易决策提供参考</p >
     </div>
     
-    <div class="image-border">
-        <img src="https://th.bing.com/th/id/OIP.kNu-bw6WBAgkDy4sQWA4cgHaGO?w=226&h=195&c=7&r=0&o=7&pid=1.7&rm=3" alt="黄金图片" width="300">
+    <div class="content">
+        <div class="card">
+            <h2>国际黄金价格</h2>
+            <div class="price-container">
+                <div class="price-item">
+                    <h3>伦敦金现</h3>
+                    <div class="price-value" id="london-gold">5059.95</div>
+                    <div class="change fall" id="london-change">-0.20 美元/盎司</div>
+                </div>
+                <div class="price-item">
+                    <h3>上海黄金T+D</h3>
+                    <div class="price-value" id="shanghai-gold">1122.56</div>
+                    <div class="change fall" id="shanghai-change">-2.49 元/克</div>
+                </div>
+            </div>
+            <div class="update-time">最后更新: 2026-02-12 20:26:45</div>
+        </div>
+        
+        <div class="image-section">
+            <div class="image-border">
+                < img src="https://th.bing.com/th/id/OIP.kNu-bw6WBAgkDy4sQWA4cgHaGO?w=226&h=195&c=7&r=0&o=7&pid=1.7&rm=3" alt="黄金图片" width="400">
+            </div>
+        </div>
     </div>
     
-    <p>注：数据每60秒自动更新一次，来源为上海黄金交易所和国际贵金属市场实时行情。</p>
-
+    <div class="note">
+        <p>注：数据每60秒自动更新一次，来源为上海黄金交易所和国际贵金属市场实时行情。</p >
+    </div>
     <script>
-        // 模拟实时数据更新，实际项目中可替换为真实API
         function updateGoldPrice() {
-            // 这里用 setTimeout 模拟API请求延迟
             setTimeout(() => {
-                // 伦敦金现：5059.95美元/盎司，涨跌-0.20
-                // 上海黄金T+D：1122.56元/克，涨跌-2.49
                 const londonPrice = "5059.95";
                 const londonChange = "-0.20";
                 const shanghaiPrice = "1122.56";
                 const shanghaiChange = "-2.49";
                 
-                // 更新价格显示
                 document.getElementById('london-gold').textContent = londonPrice;
                 document.getElementById('shanghai-gold').textContent = shanghaiPrice;
                 
-                // 更新涨跌幅和颜色
                 const londonChangeEl = document.getElementById('london-change');
-                londonChangeEl.textContent = `${londonChange > 0 ? '+' : ''}${londonChange} 美元`;
+                londonChangeEl.textContent = `${londonChange > 0 ? '+' : ''}${londonChange} 美元/盎司`;
                 londonChangeEl.className = `change ${londonChange >= 0 ? 'rise' : 'fall'}`;
                 
                 const shanghaiChangeEl = document.getElementById('shanghai-change');
-                shanghaiChangeEl.textContent = `${shanghaiChange > 0 ? '+' : ''}${shanghaiChange} 元`;
+                shanghaiChangeEl.textContent = `${shanghaiChange > 0 ? '+' : ''}${shanghaiChange} 元/克`;
                 shanghaiChangeEl.className = `change ${shanghaiChange >= 0 ? 'rise' : 'fall'}`;
                 
-                // 更新时间戳
                 const now = new Date();
                 const timeStr = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${now.getDate().toString().padStart(2,'0')} ${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
                 document.getElementById('update-time').textContent = timeStr;
             }, 500);
         }
         
-        // 页面加载时更新一次
         updateGoldPrice();
-        // 之后每分钟更新一次
         setInterval(updateGoldPrice, 60000);
     </script>
 </body>
