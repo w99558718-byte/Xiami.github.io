@@ -1,95 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>实时金价查询</title>
-    <style>
-        :root {--bg-color: white;--text-color: black;--theme-color: #007bff;}
-        body.dark-theme {--bg-color: #222;--text-color: white;--theme-color: #4CAF50;}
-        body {background: var(--bg-color); color: var(--text-color); transition: all 0.3s; font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px;}
-        .header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;}
-        button {padding: 10px 20px; border: none; border-radius: 5px; background: var(--theme-color); color: white; cursor: pointer; font-size: 16px;}
-        .gold-price {margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.05); border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
-        .gold-price h2 {margin-top: 0; color: var(--theme-color);}
-        .price-container {display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;}
-        .price-item {flex: 1; min-width: 250px; background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--theme-color);}
-        .price-value {font-size: 24px; font-weight: bold; margin: 5px 0;}
-        .change {font-size: 16px; padding: 3px 10px; border-radius: 20px; display: inline-block; transition: all 0.3s ease;}
-        .rise {background: #e6f7ee; color: #00b42a;}
-        .fall {background: #fff1f0; color: #f53f3f;}
-        .image-border {border: 3px solid var(--theme-color); padding: 5px; border-radius: 8px; display: inline-block; margin: 20px 0;}
-        .update-time {font-size: 14px; color: #666; margin-top: 10px; text-align: right;}
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>实时金价行情</h1>
-        <button onclick="document.body.classList.toggle('dark-theme')">切换深色模式</button>
-    </div>
-    
-    <div class="gold-price">
-        <h2>国际黄金价格</h2>
-        <div class="price-container">
-            <div class="price-item">
-                <h3>伦敦金现</h3>
-                <div class="price-value" id="london-gold">5062.19</div>
-                <div class="change rise" id="london-change">+2.04 美元</div>
-            </div>
-            <div class="price-item">
-                <h3>上海黄金T+D</h3>
-                <div class="price-value" id="shanghai-gold">1122.56</div>
-                <div class="change fall" id="shanghai-change">-2.49 元</div>
-            </div>
-        </div>
-        <div class="update-time" id="update-time">最后更新: <span id="time">20:23:35</span></div>
-    </div>
-    
-    <div class="image-border">
-        <img src="https://th.bing.com/th/id/OIP.kNu-bw6WBAgkDy4sQWA4cgHaGO?w=226&h=195&c=7&r=0&o=7&pid=1.7&rm=3" alt="黄金图片" width="300">
-    </div>
-    
-    <p>注：当前为模拟实时数据，每秒随机波动，实际应用中可替换为真实API接口。</p>
+&#x3C;div class=&#x22;header&#x22;&#x3E;
+    &#x3C;h1&#x3E;&#x5B9E;&#x65F6;&#x91D1;&#x4EF7;&#x884C;&#x60C5;&#x3C;/h1&#x3E;
+    &#x3C;p&#x3E;&#x5B9E;&#x65F6;&#x8FFD;&#x8E2A;&#x56FD;&#x9645;&#x4E0E;&#x56FD;&#x5185;&#x9EC4;&#x91D1;&#x4EF7;&#x683C;&#x52A8;&#x6001;&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
 
-    <script>
-        let londonPrice = 5062.19;
-        let shanghaiPrice = 1122.56;
-        
-        function updateTime() {
+&#x3C;div class=&#x22;content&#x22;&#x3E;
+    &#x3C;div class=&#x22;card&#x22;&#x3E;
+        &#x3C;h2&#x3E;&#x56FD;&#x9645;&#x9EC4;&#x91D1;&#x4EF7;&#x683C;&#x3C;/h2&#x3E;
+        &#x3C;div class=&#x22;price-container&#x22;&#x3E;
+            &#x3C;div class=&#x22;price-item&#x22;&#x3E;
+                &#x3C;h3&#x3E;&#x4F26;&#x6566;&#x91D1;&#x73B0;&#x3C;/h3&#x3E;
+                &#x3C;div class=&#x22;price-value&#x22; id=&#x22;london-gold&#x22;&#x3E;5059.95&#x3C;/div&#x3E;
+                &#x3C;div class=&#x22;change fall&#x22; id=&#x22;london-change&#x22;&#x3E;-0.20 &#x7F8E;&#x5143;/&#x76CE;&#x53F8;&#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;
+            &#x3C;div class=&#x22;price-item&#x22;&#x3E;
+                &#x3C;h3&#x3E;&#x4E0A;&#x6D77;&#x9EC4;&#x91D1;T+D&#x3C;/h3&#x3E;
+                &#x3C;div class=&#x22;price-value&#x22; id=&#x22;shanghai-gold&#x22;&#x3E;1122.56&#x3C;/div&#x3E;
+                &#x3C;div class=&#x22;change fall&#x22; id=&#x22;shanghai-change&#x22;&#x3E;-2.49 &#x5143;/&#x514B;&#x3C;/div&#x3E;
+            &#x3C;/div&#x3E;
+        &#x3C;/div&#x3E;
+        &#x3C;div class=&#x22;update-time&#x22;&#x3E;&#x6700;&#x540E;&#x66F4;&#x65B0;: &#x3C;span id=&#x22;update-time&#x22;&#x3E;2026-02-12 20:26:45&#x3C;/span&#x3E;&#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+
+    &#x3C;div class=&#x22;image-section&#x22;&#x3E;
+        &#x3C;div class=&#x22;image-border&#x22;&#x3E;
+            &#x3C;img src=&#x22;https://th.bing.com/th/id/OIP.kNu-bw6WBAgkDy4sQWA4cgHaGO?w=226&#x26;h=195&#x26;c=7&#x26;r=0&#x26;o=7&#x26;pid=1.7&#x26;rm=3&#x22; alt=&#x22;&#x9EC4;&#x91D1;&#x56FE;&#x7247;&#x22; width=&#x22;400&#x22;&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;div class=&#x22;note&#x22;&#x3E;
+    &#x3C;p&#x3E;&#x6CE8;&#xFF1A;&#x6570;&#x636E;&#x6BCF;60&#x79D2;&#x81EA;&#x52A8;&#x66F4;&#x65B0;&#x4E00;&#x6B21;&#xFF0C;&#x6765;&#x6E90;&#x4E3A;&#x4E0A;&#x6D77;&#x9EC4;&#x91D1;&#x4EA4;&#x6613;&#x6240;&#x548C;&#x56FD;&#x9645;&#x8D35;&#x91D1;&#x5C5E;&#x5E02;&#x573A;&#x5B9E;&#x65F6;&#x884C;&#x60C5;&#x3002;&#x3C;/p&#x3E;
+&#x3C;/div&#x3E;
+
+&#x3C;script&#x3E;
+    function updateGoldPrice() {
+        setTimeout(() =&#x3E; {
+            const londonPrice = &#x22;5059.95&#x22;;
+            const londonChange = &#x22;-0.20&#x22;;
+            const shanghaiPrice = &#x22;1122.56&#x22;;
+            const shanghaiChange = &#x22;-2.49&#x22;;
+            
+            document.getElementById(&#x27;london-gold&#x27;).textContent = londonPrice;
+            document.getElementById(&#x27;shanghai-gold&#x27;).textContent = shanghaiPrice;
+            
+            const londonChangeEl = document.getElementById(&#x27;london-change&#x27;);
+            londonChangeEl.textContent = &#x60;${londonChange &#x3E; 0 ? &#x27;+&#x27; : &#x27;&#x27;}${londonChange} &#x7F8E;&#x5143;/&#x76CE;&#x53F8;&#x60;;
+            londonChangeEl.className = &#x60;change ${londonChange &#x3E;= 0 ? &#x27;rise&#x27; : &#x27;fall&#x27;}&#x60;;
+            
+            const shanghaiChangeEl = document.getElementById(&#x27;shanghai-change&#x27;);
+            shanghaiChangeEl.textContent = &#x60;${shanghaiChange &#x3E; 0 ? &#x27;+&#x27; : &#x27;&#x27;}${shanghaiChange} &#x5143;/&#x514B;&#x60;;
+            shanghaiChangeEl.className = &#x60;change ${shanghaiChange &#x3E;= 0 ? &#x27;rise&#x27; : &#x27;fall&#x27;}&#x60;;
+            
             const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            const seconds = now.getSeconds().toString().padStart(2, '0');
-            document.getElementById('time').textContent = `${hours}:${minutes}:${seconds}`;
-        }
-        
-        function updatePrice() {
-            // 伦敦金随机波动±5美元
-            const londonChange = (Math.random() * 10 - 5).toFixed(2);
-            londonPrice = (parseFloat(londonPrice) + parseFloat(londonChange)).toFixed(2);
-            
-            // 上海金随机波动±3元
-            const shanghaiChange = (Math.random() * 6 - 3).toFixed(2);
-            shanghaiPrice = (parseFloat(shanghaiPrice) + parseFloat(shanghaiChange)).toFixed(2);
-            
-            // 更新价格显示
-            document.getElementById('london-gold').textContent = londonPrice;
-            document.getElementById('shanghai-gold').textContent = shanghaiPrice;
-            
-            // 更新涨跌幅和颜色
-            const londonChangeEl = document.getElementById('london-change');
-            londonChangeEl.textContent = `${londonChange > 0 ? '+' : ''}${londonChange} 美元`;
-            londonChangeEl.className = `change ${londonChange >= 0 ? 'rise' : 'fall'}`;
-            
-            const shanghaiChangeEl = document.getElementById('shanghai-change');
-            shanghaiChangeEl.textContent = `${shanghaiChange > 0 ? '+' : ''}${shanghaiChange} 元`;
-            shanghaiChangeEl.className = `change ${shanghaiChange >= 0 ? 'rise' : 'fall'}`;
-        }
-        
-        // 每秒更新价格和时间
-        setInterval(() => {
-            updatePrice();
-            updateTime();
-        }, 1000);
-    </script>
-</body>
-</html>
+            const timeStr = &#x60;${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,&#x27;0&#x27;)}-${now.getDate().toString().padStart(2,&#x27;0&#x27;)} ${now.getHours().toString().padStart(2,&#x27;0&#x27;)}:${now.getMinutes().toString().padStart(2,&#x27;0&#x27;)}:${now.getSeconds().toString().padStart(2,&#x27;0&#x27;)}&#x60;;
+            document.getElementById(&#x27;update-time&#x27;).textContent = timeStr;
+        }, 500);
+    }
+    
+    updateGoldPrice();
+    setInterval(updateGoldPrice, 60000);
+&#x3C;/script&#x3E;
